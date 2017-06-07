@@ -1,10 +1,9 @@
 #!/bin/bash
 
-if [ "$s1" == "" ]; then
-    echo "usage: ./DEPLOY-iri.sh [the iri version you want to deploy]"
+if [ "$1" == "" ]; then
+    echo "Usage: ./DEPLOY-iri.sh [the iri version you want to deploy]"
+    exit 1
 fi
-
-exit 0
 
 IRI=iri-$1.jar 
 
@@ -15,7 +14,7 @@ do
     echo "Copying $IRI to node$i ..."
     scp $IRI ubuntu@node$i.puyuma.org:~
     echo "Restarting IRI on node$i ..."
-    ssh ubuntu@node$i.puyuma.org "sh /home/ubuntu/run.sh &"
+    ssh ubuntu@node$i.puyuma.org "sh /home/ubuntu/run.sh \"$1\" > /dev/null 2>&1 &"
     sleep 1
     rm -f $TMP
     ssh ubuntu@node$i.puyuma.org "ps aux" > $TMP

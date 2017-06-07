@@ -1,7 +1,13 @@
-#!/bin/sh
+#!/bin/bash
+
+if [ "$1" == "" ]; then
+    echo "Usage: ./BUILD-iri.sh [the iri version you want to build]"
+    exit 1
+fi
 
 cd iri
 # sanity checks
+echo "Sanity checking ... ..."
 if [ ! -f $HOME/.m2/repository/org/rocksdb/rocksdbjni/5.1.5/rocksdbjni-5.1.5.jar ]; then
     echo "rocksdbjni-5.1.5 is not available!"
     exit 1
@@ -17,4 +23,9 @@ echo "Building IRI. Please wait."
 set -x
 mvn -q clean compile
 mvn -q package
-cp -f target/iri-*.jar ../
+cp -f target/iri-$1.jar ../
+
+# validate thee iri file
+cd ..
+echo "Validate iri-$1.jar" 
+./VALIDATE-iri.sh iri-$1.jar
