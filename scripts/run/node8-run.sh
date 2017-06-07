@@ -22,7 +22,7 @@ nohup java -server \
         -XX:MaxMetaspaceSize=256m \
         -XX:+UseCompressedOops \
         -jar /home/ubuntu/$IRI \
-        --config iri_depoly_scripts/configs/node8-config.ini \
+        --config iri_deploy_scripts/configs/node8-config.ini \
         --remote-limit-api 'removeNeighbors, addNeighbors' --remote &
 
 sleep 2
