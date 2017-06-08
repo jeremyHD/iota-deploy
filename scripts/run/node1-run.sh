@@ -16,9 +16,8 @@ rm -f nohup.out
 rm -f hs_err_pid*.log
 
 # -XX:+UseParallelGC
-# -XX:+UseParallelGC
 nohup java -server \
-        -Xmx800m -Xms128m -Xmn1g -Xss512k \
+        -Xmx580m -Xms128m -Xmn1g -Xss512k \
         -XX:+UseParNewGC \
         -XX:MaxMetaspaceSize=256m \
         -XX:+UseCompressedOops \
