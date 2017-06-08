@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$1" == "" ]; then
-    echo "Usage: ./run.sh [the iri version you want to run]"
+    echo "Usage: ./run.sh [the iri version you want to run] [path of config file]"
     exit 1
 fi
 
@@ -18,12 +18,14 @@ rm -f hs_err_pid*.log
 # -XX:+UseParallelGC
 nohup java -server \
         -Xmx580m -Xms128m -Xmn1g -Xss512k \
-        -XX:+UseParNewGC \
+        -Xincgc \
+        -XX:InitiatingHeapOccupancyPercent=0 \
         -XX:MaxMetaspaceSize=256m \
         -XX:+UseCompressedOops \
-        -jar /home/ubuntu/$IRI \
-        --config iri_deploy_scripts/configs/node2-config.ini \
+	-jar /home/ubuntu/$IRI \
+	--config $2 \
         --remote-limit-api 'removeNeighbors, addNeighbors' --remote &
+
 
 sleep 2
 cat nohup.out
