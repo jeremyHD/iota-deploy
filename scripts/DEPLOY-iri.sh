@@ -9,7 +9,11 @@ IRI=iri-$1.jar
 
 TMP=/tmp/remote.out
 
-for i in {2..8}
+# validate thee iri file
+echo "Validate iri-$1.jar" 
+./VALIDATE-iri.sh iri-$1.jar
+
+for i in {2..9}
 do
     echo "Copying $IRI to node$i ..."
     scp $IRI ubuntu@node$i.puyuma.org:~

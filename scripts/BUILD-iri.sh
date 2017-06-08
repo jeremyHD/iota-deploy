@@ -24,8 +24,3 @@ set -x
 mvn -q clean compile
 mvn -q package
 cp -f target/iri-$1.jar ../
-
-# validate thee iri file
-cd ..
-echo "Validate iri-$1.jar" 
-./VALIDATE-iri.sh iri-$1.jar
