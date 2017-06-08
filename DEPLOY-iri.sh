@@ -9,7 +9,7 @@ IRI=iri-$1.jar
 
 TMP=/tmp/remote.out
 
-for i in {2..9}
+for i in {2..8}
 do
     echo "Copying $IRI to node$i ..."
     scp $IRI ubuntu@node$i.puyuma.org:~
