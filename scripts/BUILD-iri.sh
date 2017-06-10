@@ -8,12 +8,12 @@ fi
 cd iri
 # sanity checks
 echo "Sanity checking ... ..."
-if [ ! -f $HOME/.m2/repository/org/rocksdb/rocksdbjni/5.1.5/rocksdbjni-5.1.5.jar ]; then
-    echo "rocksdbjni-5.1.5 is not available!"
+if [ ! -f $HOME/.m2/repository/org/rocksdb/rocksdbjni/5.6.0/rocksdbjni-5.6.0.jar ]; then
+    echo "rocksdbjni-5.6.0 is not available!"
     exit 1
 fi
-if ! grep "5.1.5" pom.xml; then
-    echo "Depends on rocksdbjni-5.1.5"
+if ! grep "5.6.0" pom.xml; then
+    echo "Depends on rocksdbjni-5.6.0"
     echo "Please modify iri/pom.xml in advance."
     exit 1
 fi
