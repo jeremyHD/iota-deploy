@@ -33,5 +33,20 @@ if ! file $TMP_DIR/librocksdbjni-linux64.so | grep "ARM aarch64" >/dev/null; the
     exit 1
 fi
 
+if ! grep "RocksDB version: 5.6.0" /home/ubuntu/mainnet.log/home_ubuntu_LOG >/dev/null; then
+    echo "Error: not running with RocksDB version: 5.6.0."
+    exit 1
+fi
+
+if ! grep "ZSTD supported: 1" /home/ubuntu/mainnet.log/home_ubuntu_LOG >/dev/null; then
+    echo "Error: not support ZSTD."
+    exit 1
+fi
+
+if ! grep "Fast CRC32 supported: 1" /home/ubuntu/mainnet.log/home_ubuntu_LOG >/dev/null; then
+    echo "Error: not support CRC32."
+    exit 1
+fi
+
 echo
-echo "$1 is verified as ARM64-built rocksdbjni."
+echo "$1 is verified as ARM64-built rocksdbjni inside."
