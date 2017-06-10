@@ -18,7 +18,7 @@ do
     echo "Copying $IRI to node$i ..."
     scp $IRI ubuntu@node$i.puyuma.org:~
     echo "Restarting IRI on node$i ..."
-    ssh ubuntu@node$i.puyuma.org "sh /home/ubuntu/run.sh \"$1\" > /dev/null 2>&1 &"
+    ssh ubuntu@node$i.puyuma.org "sh /home/ubuntu/run.sh \"$1\" /home/ubuntu/iri_deploy_scripts/configs/node$i-config.ini> /dev/null 2 >&1 &"
     sleep 1
     rm -f $TMP
     ssh ubuntu@node$i.puyuma.org "ps aux" > $TMP
