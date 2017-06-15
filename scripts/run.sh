@@ -15,13 +15,14 @@ pkill -9 java
 rm -f nohup.out
 rm -f hs_err_pid*.log
 
-# -XX:+UseParallelGC
 nohup java -server \
-        -Xmx580m -Xms128m -Xmn1g -Xss512k \
+	-Xmx540m -Xms128m -Xmn1g -Xss512k \
+	-Xmn256m \
         -Xincgc \
         -XX:InitiatingHeapOccupancyPercent=0 \
         -XX:MaxMetaspaceSize=256m \
         -XX:+UseCompressedOops \
+	-Djava.awt.headless=true \
 	-jar /home/ubuntu/$IRI \
 	--config $2 \
         --remote-limit-api 'removeNeighbors, addNeighbors' --remote &
