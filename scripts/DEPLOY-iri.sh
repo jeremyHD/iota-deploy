@@ -9,7 +9,7 @@ IRI=iri-$1.jar
 TMP=/tmp/remote.out
 
 # List of full-nodes
-FILE_NODES_CONNECTION="/home/ubuntu/iri_deploy_scripts/configs/list_nodes.conf"
+FILE_NODES_CONNECTION="/home/ubuntu/iri_deploy_scripts/configs/list_nodes.config"
 LIST_NODES=`cat $FILE_NODES_CONNECTION`
 LIST_NODES=(${LIST_NODES//,/ })
 
