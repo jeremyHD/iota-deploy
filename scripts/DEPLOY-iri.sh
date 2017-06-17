@@ -6,23 +6,29 @@ if [ "$1" == "" ]; then
 fi
 
 IRI=iri-$1.jar 
-
 TMP=/tmp/remote.out
+
+# List of full-nodes
+FILE_NODES_CONNECTION="/home/ubuntu/iri_deploy_scripts/configs/list_nodes.conf"
+LIST_NODES=`cat $FILE_NODES_CONNECTION`
+LIST_NODES=(${LIST_NODES//,/ })
 
 # validate thee iri file
 echo "Validate iri-$1.jar" 
 ./VALIDATE-iri.sh iri-$1.jar
 
-for i in {2..9}
+for i in "${!LIST_NODES[@]}"
 do
     echo "Copying $IRI to node$i ..."
-    scp $IRI ubuntu@node$i.puyuma.org:~
+    scp $IRI ${LIST_NODES[i]}:~
     echo "Restarting IRI on node$i ..."
-    ssh ubuntu@node$i.puyuma.org "sh /home/ubuntu/run.sh \"$1\" /home/ubuntu/iri_deploy_scripts/configs/node$i-config.ini> /dev/null 2 >&1 &"
+    IFS='@ ' read -r -a domain_name <<< "${LIST_NODES[i]}"
+    config_name="${domain_name[1]//./_}.config"
+    ssh ${LIST_NODES[i]} "sh /home/ubuntu/run.sh \"$1\" /home/ubuntu/iri_deploy_scripts/configs/$config_name> /dev/null 2 >&1 &"
     sleep 1
     rm -f $TMP
-    ssh ubuntu@node$i.puyuma.org "ps aux" > $TMP
+    ssh ${LIST_NODES[i]} "ps aux" > $TMP
     if grep $IRI $TMP > /dev/null; then
-        echo "node$i is ready."
+        echo "${LIST_NODES[i]} is ready."
     fi
 done
