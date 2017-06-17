@@ -24,7 +24,7 @@ do
     echo "Restarting IRI on ${LIST_NODES[i]} ..."
     IFS='@ ' read -r -a domain_name <<< "${LIST_NODES[i]}"
     config_name="${domain_name[1]//./_}.config"
-    ssh ${LIST_NODES[i]} "sh /home/ubuntu/run.sh \"$1\" /home/ubuntu/iri_deploy_scripts/configs/$config_name> /dev/null 2 >&1 &"
+    ssh ${LIST_NODES[i]} "sh /home/ubuntu/run.sh $1 /home/ubuntu/iri_deploy_scripts/configs/$config_name> /dev/null 2>&1 &"
     sleep 1
     rm -f $TMP
     ssh ${LIST_NODES[i]} "ps aux" > $TMP
