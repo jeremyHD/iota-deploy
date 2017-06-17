@@ -19,9 +19,9 @@ echo "Validate iri-$1.jar"
 
 for i in "${!LIST_NODES[@]}"
 do
-    echo "Copying $IRI to node$i ..."
+    echo "Copying $IRI to ${LIST_NODES[i]} ..."
     scp $IRI ${LIST_NODES[i]}:~
-    echo "Restarting IRI on node$i ..."
+    echo "Restarting IRI on ${LIST_NODES[i]} ..."
     IFS='@ ' read -r -a domain_name <<< "${LIST_NODES[i]}"
     config_name="${domain_name[1]//./_}.config"
     ssh ${LIST_NODES[i]} "sh /home/ubuntu/run.sh \"$1\" /home/ubuntu/iri_deploy_scripts/configs/$config_name> /dev/null 2 >&1 &"
