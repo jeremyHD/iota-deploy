@@ -21,6 +21,9 @@ nohup java -server \
         -Xincgc \
         -XX:InitiatingHeapOccupancyPercent=0 \
         -XX:MaxMetaspaceSize=256m \
+	-XX:ReservedCodeCacheSize=2496k \
+	-XX:CodeCacheMinimumFreeSpace=100k \
+	-XX:MaxHeapFreeRatio=10 -XX:MinHeapFreeRatio=5 \
         -XX:+UseCompressedOops \
 	-Djava.awt.headless=true \
 	-jar /home/ubuntu/$IRI \
