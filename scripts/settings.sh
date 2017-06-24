@@ -8,7 +8,7 @@ VERION_IRI=1.2.1
 IRI=iri-$VERION_IRI.jar
 
 # The file of all nodes ssh connection command
-FILE_NODES_CONNECTION="configs/list_nodes.txt"
+FILE_NODES_CONNECTION="../configs/list_nodes.config"
 
 # List of all nodes for testing
 LIST_NODES=`cat $FILE_NODES_CONNECTION`
