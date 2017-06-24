@@ -8,3 +8,6 @@ Build IOTA iri 1.1.4.x with rocksdb 5.1.5 and deploy automatically
 
 * DEPLOY-iri.sh: (Deploy the iri jar file to each puyuma server)
   * ./DEPLOY-iri.sh [the iri version you want to deploy]
+
+* MONITOR-iri.sh: (Monitor iri status and system resource loading)
+  * ./MONITOR-iri.sh
