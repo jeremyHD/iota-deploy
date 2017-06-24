@@ -28,7 +28,6 @@ nohup java -server \
 	-Djava.awt.headless=true \
 	-jar /home/ubuntu/$IRI \
 	--config $2 \
-	--revalidate \
         --remote-limit-api 'removeNeighbors, addNeighbors' --remote > nohup.out &
 
 sleep 2
