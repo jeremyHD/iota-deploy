@@ -10,7 +10,7 @@ source ./modules/slack.sh
 source ./settings.sh
 
 RSS_UPPER_BOUND=665600
-CPU_UPPER_BOUND=185
+CPU_UPPER_BOUND=185.5
 
 # Check if IRI PID changed
 function validate_pid_chnaged()
@@ -67,6 +67,7 @@ function check_iri_loading()
 
     echo "Check system loading(CPU) ..."
     log_cpu=`ssh $1 "ps -p $2 -o pcpu="`
+
     if [[ $1 == "ubuntu@node.deviceproof.org" ]] ; then
         if [[ $log_cpu > $CPU_UPPER_BOUND ]] ; then
             echo "Error: $1: CPU loading up to $log_cpu"
