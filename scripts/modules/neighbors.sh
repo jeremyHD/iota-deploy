@@ -34,9 +34,10 @@ function set_0tx_count()
 
 	        sed -i "s/$line/$final/g" $NEIGHBOR_STATUS_TMP_FILE
 
-		# FIXME: Prevent hardcoding: TEST_TIME_INTERVAL*12 = 1 hours
-	        if [[ "$count_tx" -gt "12" ]] ; then
-		    msg_slack_nodeinfo_channel "Error: Neighbor: $1:${node_address//\"/} 0 transaction for 1 hour"
+		# FIXME: Alert 0 transaction with slack message every hours (still very rough of time calculate)
+                counts_of_hours=$((3600/$TEST_TIME_INTERVAL))
+	        if [[ $((count_tx%counts_of_hours)) -eq 0 ]] ; then
+		    msg_slack_nodeinfo_channel "Error: Neighbor: $1:${node_address//\"/} 0 transaction over $((count_tx/counts_of_hours)) hours"
 	        fi
 	    fi
 	done
