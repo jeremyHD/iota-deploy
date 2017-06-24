@@ -33,3 +33,6 @@ nohup java -server \
 
 sleep 2
 cat nohup.out
+
+# Save IRI PID
+pgrep -f $IRI > /var/run/iri.pid
