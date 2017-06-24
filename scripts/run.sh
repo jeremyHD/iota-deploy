@@ -5,16 +5,16 @@ if [ "$1" == "" ]; then
     exit 1
 fi
 
+source ./run_lib.sh
+
 IRI=iri-$1.jar
-
 set -x
-
 pkill -9 java
 
-# FIXME: move runtime logs to dedicated directory
-rm -f nohup.out
-rm -f hs_err_pid*.log
+# Move runtime logs to dedicated directory
+backup_logs
 
+# Run IRI service
 nohup java -server \
 	-Xmx540m -Xms128m -Xmn1g -Xss512k \
 	-Xmn256m \
@@ -28,6 +28,7 @@ nohup java -server \
 	-Djava.awt.headless=true \
 	-jar /home/ubuntu/$IRI \
 	--config $2 \
+	--revalidate \
         --remote-limit-api 'removeNeighbors, addNeighbors' --remote > nohup.out &
 
 sleep 2
