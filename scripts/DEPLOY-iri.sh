@@ -9,7 +9,7 @@ IRI=iri-$1.jar
 TMP=/tmp/remote.out
 
 # List of full-nodes
-FILE_NODES_CONNECTION="/home/ubuntu/iri_deploy_scripts/configs/list_nodes.config"
+FILE_NODES_CONNECTION="/home/ubuntu/iota-deploy/configs/list_nodes.config"
 LIST_NODES=`cat $FILE_NODES_CONNECTION`
 LIST_NODES=(${LIST_NODES//,/ })
 
@@ -24,7 +24,7 @@ do
     echo "Restarting IRI on ${LIST_NODES[i]} ..."
     IFS='@ ' read -r -a domain_name <<< "${LIST_NODES[i]}"
     config_name="${domain_name[1]//./_}.config"
-    ssh ${LIST_NODES[i]} "sh /home/ubuntu/run.sh $1 /home/ubuntu/iri_deploy_scripts/configs/$config_name> /dev/null 2>&1 &"
+    ssh ${LIST_NODES[i]} "sh /home/ubuntu/run.sh $1 /home/ubuntu/iota-deploy/configs/$config_name> /dev/null 2>&1 &"
     sleep 1
     rm -f $TMP
     ssh ${LIST_NODES[i]} "ps aux" > $TMP

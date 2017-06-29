@@ -39,7 +39,7 @@ function check_iri_service()
         config_name="${domain_name[1]//./_}.config"
 
         # Restart
-        ssh $1 "sh /home/ubuntu/run.sh $VERION_IRI /home/ubuntu/iri_deploy_scripts/configs/$config_name > /dev/null 2>&1 &"
+        ssh $1 "sh /home/ubuntu/run.sh $VERION_IRI /home/ubuntu/iota-deploy/configs/$config_name > /dev/null 2>&1 &"
         msg_slack_nodeinfo_channel "Error: $1 
             IRI service is down, try to restart, refer to the LOG/
             nohup.out for detail."
