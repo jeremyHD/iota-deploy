@@ -1,5 +1,5 @@
 ## Introduction:
-Build IOTA iri 1.2.x with rocksdb 5.6.x and deploy automatically
+Build IOTA iri 1.3.x with rocksdb 5.6.x and deploy automatically
 
 * BUILD-iri.sh: (Build the llatest version iri (dev branch) with rocksdb 5.6.x
   * Clone IOTA iri repository https://github.com/iotaledger/iri.git and change to the dev branch
