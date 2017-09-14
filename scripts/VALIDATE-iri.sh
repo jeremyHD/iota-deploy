@@ -33,8 +33,8 @@ if ! file $TMP_DIR/librocksdbjni-linux64.so | grep "ARM aarch64" >/dev/null; the
     exit 1
 fi
 
-if ! grep "RocksDB version: 5.6.2" /home/ubuntu/mainnet.log/home_ubuntu_LOG >/dev/null; then
-    echo "Error: not running with RocksDB version: 5.6.2."
+if ! grep "RocksDB version: 5.8.0" /home/ubuntu/mainnet.log/home_ubuntu_LOG >/dev/null; then
+    echo "Error: not running with RocksDB version: 5.8.0."
     exit 1
 fi
 
