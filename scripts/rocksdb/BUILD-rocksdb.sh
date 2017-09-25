@@ -8,6 +8,8 @@ VER_SNAPPY="1.1.4"
 
 # Clone RocksDB
 if [[ ! -e $DIR_ROCKSDB ]]; then
+    sudo apt-get -y install autotools-dev
+    sudo apt-get -y install automake
     git clone $REPO_ROCKSDB 
 fi
 
