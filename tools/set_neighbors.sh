@@ -16,5 +16,5 @@ echo $CMD
 curl http://localhost:14265 \
         -X POST \
         -H 'Content-Type: application/json' \
+	-H 'X-IOTA-API-VERSION: 1.4.1' \
         -d "{'command': '$1Neighbors', 'uris': [$CMD]}" | python -m json.tool
-
