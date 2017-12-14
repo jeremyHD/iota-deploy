@@ -1,13 +1,20 @@
-## Introduction:
-Build IOTA iri 1.3.x with rocksdb 5.8.x and deploy automatically
+# IOTA-deploy
 
-* BUILD-iri.sh: (Build the llatest version iri (dev branch) with rocksdb 5.8.x
-  * Clone IOTA iri repository https://github.com/iotaledger/iri.git and change to the dev branch
-  * Make sure the rockdb path in $HOME/.m2/repository/org/rocksdb/rocksdbjni/5.8.x/rocksdbjni-5.8.x.jar
-  * Execute ./BUILD-iri.sh [the iri version you want to build]
+## Introduction
 
-* DEPLOY-iri.sh: (Deploy the iri jar file to each puyuma server)
-  * ./DEPLOY-iri.sh [the iri version you want to deploy]
+A set of scripts which build and deploy IOTA reference implementation (IRI)
+along with latest RocksDB automatically.
 
-* MONITOR-iri.sh: (Monitor iri status and system resource loading)
-  * ./MONITOR-iri.sh
+## Files
+
+* BUILD-iri.sh
+  * Build latest verified IRI and customized RocksDB.
+  * Usage: `BUILD-iri.sh [preferable_IRI_version]`
+
+* DEPLOY-iri.sh
+  * Deploy IRI binary file(s) to IOTA nodes.
+  * Usage: `DEPLOY-iri.sh [preferable_IRI_version]`
+
+* MONITOR-iri.sh
+  * Monitor IRI status and summarize system resources.
+  * Uage: `MONITOR-iri.sh`
