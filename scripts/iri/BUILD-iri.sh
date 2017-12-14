@@ -2,6 +2,7 @@
 
 DIR_IRI="iri"
 REPO_IRI="https://github.com/jserv/iri.git"
+ROCKSDB_VER="5.8.8"
 
 # Specific IRI version to deploy
 if [ "$1" == "" ]; then
@@ -20,12 +21,12 @@ cd $DIR_IRI
 
 ## Sanity checks
 echo "Sanity checking ... ..."
-if [ ! -f $HOME/.m2/repository/org/rocksdb/rocksdbjni/5.8.0/rocksdbjni-5.8.0.jar ]; then
-    echo "rocksdbjni-5.8.0 is not available!"
+if [ ! -f $HOME/.m2/repository/org/rocksdb/rocksdbjni/$ROCKSDB_VER/rocksdbjni-$ROCKSDB_VER.jar ]; then
+    echo "rocksdbjni-$ROCKSDB_VER is not available!"
     exit 1
 fi
-if ! grep "5.8.0" pom.xml; then
-    echo "Depends on rocksdbjni-5.8.0"
+if ! grep "$ROCKSDB_VER" pom.xml; then
+    echo "Depends on rocksdbjni-$ROCKSDB_VER"
     echo "Please modify iri/pom.xml in advance."
     exit 1
 fi
