@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIR_IRI="iri"
-REPO_IRI="https://github.com/jserv/iri.git"
+REPO_IRI="https://github.com/jeremyHD/iri.git"
 ROCKSDB_VER="5.8.8"
 
 # Specific IRI version to deploy

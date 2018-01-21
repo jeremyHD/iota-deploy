@@ -1,8 +1,7 @@
 #!/bin/sh
 
 # FIXME: specify ARM64 JDK path
-# export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-armhf
 
 #export CROSS_COMPILE=aarch64-linux-gnu-
 
